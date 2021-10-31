@@ -1,0 +1,7 @@
+{
+  "/Estudiantes/*":{
+    "target":"https://secure-ocean-51892.herokuapp.com/",
+    "secure": "false",
+    "logLevel": "debug"
+  }
+}
