@@ -1,3 +1,5 @@
+import { InterceptorService } from './SERVICES/interceptor.service';
+import { AuthGuard } from './auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Tabla1Component } from './tabla1/tabla1.component';
 import { MatTableModule } from '@angular/material/table';
@@ -34,6 +36,16 @@ import { FmaestrosComponent } from './fmaestros/fmaestros.component';
 import { MmaestroComponent } from './mmaestro/mmaestro.component';
 import { MpersonaComponent } from './mpersona/mpersona.component';
 import { MestudianteComponent } from './mestudiante/mestudiante.component';
+import { LoginComponent } from './login/login.component';
+import { TablacursosComponent } from './Coponontes/curso/tablacursos/tablacursos.component';
+import { CrearcursoComponent } from './Coponontes/curso/crearcurso/crearcurso.component';
+import { EditarcursoComponent } from './Coponontes/curso/editarcurso/editarcurso.component';
+import { CursoestudianteComponent } from './Coponontes/Cursoestudiante/cursoestudiante/cursoestudiante.component';
+import { EditarcursoestucianteComponent } from './Coponontes/Cursoestudiante/editarcursoestuciante/editarcursoestuciante.component';
+import { TablacursoestudianteComponent } from './Coponontes/Cursoestudiante/tablacursoestudiante/tablacursoestudiante.component';
+import { TablacursodocenteComponent } from './Coponontes/Cursodocente/tablacursodocente/tablacursodocente.component';
+import { CursodocenteComponent } from './Coponontes/Cursodocente/cursodocente/cursodocente.component';
+import { EditarcursodocenteComponent } from './Coponontes/Cursodocente/editarcursodocente/editarcursodocente.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +64,17 @@ import { MestudianteComponent } from './mestudiante/mestudiante.component';
     FmaestrosComponent,
     MmaestroComponent,
     MpersonaComponent,
-    MestudianteComponent
+    MestudianteComponent,
+    LoginComponent,
+    TablacursosComponent,
+    CrearcursoComponent,
+    EditarcursoComponent,
+    CursoestudianteComponent,
+    EditarcursoestucianteComponent,
+    TablacursoestudianteComponent,
+    TablacursodocenteComponent,
+    CursodocenteComponent,
+    EditarcursodocenteComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +97,12 @@ import { MestudianteComponent } from './mestudiante/mestudiante.component';
     MatCardModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,10 @@
       <a mat-list-item routerLink='/tabla-persona'>Personas</a>
       <a mat-list-item routerLink='/tabla-estudiante'>Estiudiantes</a>
       <a mat-list-item routerLink='/tabla-maestro'>Maestro</a>
+      <a mat-list-item routerLink='/tabla-cursos'>Cursos</a>
+      <a mat-list-item routerLink='/tabla-cursosestudiante'>Cursos Estudiante</a>
+      <a mat-list-item routerLink='/tabla-cursodocente'>Cursos Estudiante</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -15,12 +19,32 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>CONSUMIR APPI USANDO ANGULAR MATERIAL</span>
-      <div class="col">
-      <a ><button type="button" class="btn btn-outline-primary" routerLink='/fmaestro'>Agregar Maestro</button></a>
-      <a ><button type="button" class="btn btn-outline-primary" routerLink='/festudiante'>Agregar Estudiante</button></a>
-      <a ><button type="button" class="btn btn-outline-primary" routerLink='/fpersona'>Agregar Personas</button></a>
-      </div>
+      <span>ANGULAR MATERIAL</span>
+      <span class="example-spacer"></span>
+      <ng-container>
+        <a mat-button routerLink="/fmaestro">Agreg Maestro</a>
+        <a mat-button routerLink="/festudiante">Agregar Estudiante</a>
+        <a mat-button routerLink="/fpersona">Agregar Personas</a>
+        <a mat-button routerLink="/Crearcurso">Agregar Cursos</a>
+        <a mat-button routerLink="/Crearcursoestudiante">Agregar C.Est</a>
+        <a mat-button routerLink="/Crearcursodocente">Agregar C.Doc</a>
+
+
+      </ng-container>
+
+
+      <ng-container *ngIf="!logedIn(); else elseTemplate">
+        <ul class="ml-auto">
+          <a mat-button routerLink="/login">Login</a>
+        </ul>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <ul class="ml-auto">
+          <a mat-button (click)="onLogout()" >Salir</a>
+        </ul>
+      </ng-template>
+
+
 
     </mat-toolbar>
     <!--app-tabla1></app-tabla1-->

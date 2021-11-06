@@ -1,3 +1,6 @@
+import { TablacursodocenteItem } from './../Coponontes/Cursodocente/tablacursodocente/tablacursodocente-datasource';
+import { TablacursoestudianteItem } from './../Coponontes/Cursoestudiante/tablacursoestudiante/tablacursoestudiante-datasource';
+import { TablacursosItem } from './../Coponontes/curso/tablacursos/tablacursos-datasource';
 import { TablaMaestrosItem } from './../tabla-maestros/tabla-maestros-datasource';
 import { TablaEstudianteItem } from './../tabla-estudiante/tabla-estudiante-datasource';
 import { TablaPersonaItem } from './../tabla-persona/tabla-persona-datasource';
@@ -13,10 +16,14 @@ import { TablaEstudiante2Item } from '../tabla-estudiante2/tabla-estudiante2-dat
 })
 export class MantenimientoService {
 
-  url='https://secure-ocean-51892.herokuapp.com/';
-  url2='https://secure-ocean-51892.herokuapp.com/Personas';
-  url3='https://secure-ocean-51892.herokuapp.com/Estudiantes';
-  url4='https://secure-ocean-51892.herokuapp.com/Maestros';
+  url='https://stormy-brushlands-96603.herokuapp.com/inicio';
+  url2='https://stormy-brushlands-96603.herokuapp.com/Personas';
+  url3='https://stormy-brushlands-96603.herokuapp.com/Estudiantes';
+  url4='https://stormy-brushlands-96603.herokuapp.com/Maestros';
+  url5='https://stormy-brushlands-96603.herokuapp.com/cursos';
+  url6='https://stormy-brushlands-96603.herokuapp.com/estudiante_curso';
+  url7='https://stormy-brushlands-96603.herokuapp.com/curso_docente';
+
 
   constructor(private http:HttpClient) { }
 
@@ -100,37 +107,78 @@ export class MantenimientoService {
 
   }
 
+  //cursos
+  getcursos():Observable<TablacursosItem[]>{
+    return this.http.get<TablacursosItem[]>(this.url5);
+  }
 
+  addcurso(Perosna:TablacursosItem){
+    return this.http.post(this.url5, Perosna);
 
+  }
 
-  //get principal
-  /*getprincipal(){
-    return this.http.get(this.url);
-  }*/
+  deletecurso(id:number){
+    this.http.delete(this.url5+'/'+id).subscribe(
+      res => console.log(res)
+    )
+  }
 
-  /*/Mantenimiento tabla Personas
-  getunboleto(id:string){
-    return this.http.get(this.url+'/'+id);
-  }*/
+  getuncurso(id:string){
+    return this.http.get(this.url5+'/'+id);
+  }
+  editcurso(id:string, Persona:TablacursosItem){
+    return this.http.put(this.url5+'/'+id,Persona);
 
-  /*/Crear
-  addboleto(boleto:Pesona){
-    return this.http.post(this.url, boleto);
+  }
 
-  }*/
+  //cursos-estudiante
+  getcursosestudiante():Observable<TablacursoestudianteItem[]>{
+    return this.http.get<TablacursoestudianteItem[]>(this.url6);
+  }
 
-  /*/eliminar
-  eliminarboleto(id:string){
-    return this.http.delete(this.url+'/'+id);
-  }*/
+  addcursoestudiante(Perosna:TablacursoestudianteItem){
+    return this.http.post(this.url6, Perosna);
 
+  }
 
+  deletecursoestudiante(id:number){
+    this.http.delete(this.url6+'/'+id).subscribe(
+      res => console.log(res)
+    )
+  }
 
-  /*/modificar
-  editboleto(id:string, boleto:Pesona){
-    return this.http.put(this.url+'/'+id,boleto);
+  getuncursoestudiante(id:string){
+    return this.http.get(this.url6+'/'+id);
+  }
+  editcursoestudiante(id:string, Persona:TablacursoestudianteItem){
+    return this.http.put(this.url6+'/'+id,Persona);
 
-  }*/
+  }
+
+  //cursos-docente
+  getcursodocente():Observable<TablacursodocenteItem[]>{
+    return this.http.get<TablacursodocenteItem[]>(this.url7);
+  }
+
+  addcursodocente(Perosna:TablacursodocenteItem){
+    return this.http.post(this.url7, Perosna);
+
+  }
+
+  deletecursodocente(id:number){
+    this.http.delete(this.url7+'/'+id).subscribe(
+      res => console.log(res)
+    )
+  }
+
+  getuncursodocente(id:string){
+    return this.http.get(this.url7+'/'+id);
+  }
+  editcursodocente(id:string, Persona:TablacursodocenteItem){
+    return this.http.put(this.url7+'/'+id,Persona);
+
+  }
+
 
   form: FormGroup = new FormGroup({
     id: new FormControl(''),

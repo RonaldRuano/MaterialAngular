@@ -1,0 +1,68 @@
+<form novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Modificar Curso Estudiante</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <label class="form-label">id_estudiante</label>
+            <input matInput placeholder="id_estudiante" [(ngModel)]="uno.id_estudiante" type="number"
+              class="form-control" name="id_estudiante">
+            <mat-error>
+              id_estudiante is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <label class="form-label">id_curso</label>
+            <input matInput placeholder="id_curso" [(ngModel)]="uno.id_curso" type="number" class="form-control"
+              name="id_curso">
+            <mat-error>
+              id_curso is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <label class="form-label">fecha_inicio</label>
+            <input matInput placeholder="fecha_inicio" [(ngModel)]="uno.fecha_inicio" type="datetime"
+              class="form-control" name="fecha_inicio">
+            <mat-error>
+              fecha_inicio is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <label class="form-label">fecha_fin</label>
+            <input matInput placeholder="fecha_fin" [(ngModel)]="uno.fecha_fin" type="datetime" class="form-control"
+              name="fecha_fin">
+            <mat-error>
+              fecha_fin is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <label class="form-label">status</label>
+            <input matInput placeholder="status" [(ngModel)]="uno.status" type="text" class="form-control"
+              name="status">
+            <mat-error>
+              status is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
